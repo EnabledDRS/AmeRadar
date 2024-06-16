@@ -1,79 +1,79 @@
-/* Reset margins and padding for the body */
+/* General styles */
 body {
     margin: 0;
     padding: 0;
-    background-color: #222; /* Dark background for the body */
-    color: #fff; /* Light text color */
+    background-color: #222;
+    color: #fff;
     font-family: Arial, sans-serif;
 }
 
-/* General container styles */
+/* Container styles */
 .container {
     width: 100%;
-    max-width: 900px; /* Limit maximum width to 900px */
+    max-width: 900px;
     margin: auto;
     text-align: center;
-    background-color: #333; /* Dark background */
-    color: #fff; /* Light text color */
-    padding: 20px; /* Padding around the container */
-    border-radius: 10px; /* Rounded corners */
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
     box-sizing: border-box;
 }
 
-/* Controls container styles */
+/* Controls container */
 .controls-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 10px;
-    padding: 0 20px; /* Add some padding to the left and right */
-    box-sizing: border-box; /* Ensure padding is included in the width */
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
-/* Slider wrapper styles */
+/* Slider wrapper */
 .slider-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-top: 0; /* Remove top margin */
+    margin-top: 0;
 }
 
-/* Slider container styles */
+/* Slider container */
 .slider-container {
     flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 80%; /* Adjust width to desired size */
-    margin: 0 10px; /* Add margin to avoid text overlap */
+    width: 80%;
+    margin: 0 10px;
 }
 
-/* Time slider styles */
+/* Time slider */
 #timeSlider {
-    width: 100%; /* Make slider fill the container */
+    width: 100%;
 }
 
-/* Speed controls styles */
+/* Speed controls */
 .speed-controls {
     display: flex;
     align-items: center;
     gap: 10px;
     justify-content: center;
-    margin-top: 20px; /* Add some space above the speed controls */
+    margin-top: 20px;
 }
 
-/* Speed display styles */
+/* Speed display container */
 #speedDisplayContainer {
-    width: 100px; /* Fixed width for the speed display */
+    width: 100px;
     text-align: center;
-    border: 1px solid #ccc; /* Light grey border */
-    padding: 5px; /* Padding for the speed display */
-    font-size: 14px; /* Font size for the speed display */
+    border: 1px solid #ccc;
+    padding: 5px;
+    font-size: 14px;
     border-radius: 5px;
-    background-color: #444; /* Dark grey background */
-    color: #fff; /* Light text color */
-    height: 36px; /* Fixed height for consistency with buttons */
+    background-color: #444;
+    color: #fff;
+    height: 33px; /* Updated height */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -83,16 +83,16 @@ body {
 button {
     padding: 5px 10px;
     font-size: 14px;
-    background-color: #007bff; /* Blue background */
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    height: 36px; /* Match the height of speedDisplayContainer */
+    height: 33px; /* Updated height */
 }
 
 button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3;
 }
 
 button:active {
@@ -101,96 +101,96 @@ button:active {
 
 button:focus {
     outline: none;
-    background-color: #007bff; /* Reset the background color */
+    background-color: #007bff;
 }
 
 /* Dropdown styles */
 select {
     padding: 5px;
     font-size: 14px;
-    background-color: #444; /* Dark grey background */
-    color: white; /* Light text color */
+    background-color: #444;
+    color: white;
     border: none;
     border-radius: 5px;
-    height: 36px; /* Match the height of other controls */
+    height: 33px; /* Updated height */
 }
 
 select option {
-    background-color: #333; /* Darker option background */
-    color: white; /* Light text color */
+    background-color: #333;
+    color: white;
 }
 
 /* Label styles */
 label {
-    color: #fff; /* Light text color */
+    color: #fff;
 }
 
-/* Image container styles */
+/* Image container */
 .image-container {
     text-align: center;
-    max-width: 100%; /* Ensure container doesn't exceed 100% of viewport width */
-    overflow: hidden; /* Ensure no overflow */
-    padding: 0; /* Remove any padding */
-    margin: 0; /* Remove any margin */
+    max-width: 100%;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
 }
 
-/* Image styles */
+/* Image */
 #sliderImage {
     width: 100%;
     height: auto;
     max-width: 100%;
-    max-height: 80vh; /* Ensure image doesn't exceed 80% of viewport height */
-    object-fit: contain; /* Ensure image scales while maintaining aspect ratio */
-    padding: 0; /* Remove any padding */
-    margin: 0; /* Remove any margin */
+    max-height: 80vh;
+    object-fit: contain;
+    padding: 0;
+    margin: 0;
 }
 
-/* Region and refresh container styles */
+/* Region and refresh container */
 .region-refresh-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px; /* Add some space above the container */
+    margin-top: 20px;
 }
 
-/* Refresh time display styles */
+/* Refresh time display */
 .refresh-container {
     text-align: right;
     font-size: 12px;
     color: gray;
 }
 
-/* Slider label styles */
+/* Slider label */
 .slider-label {
     font-size: 14px;
     color: #fff;
-    width: 30px; /* Adjust width to bring closer to the slider */
+    width: 30px;
 }
 
 .slider-label.left {
-    margin-right: 5px; /* Adjust margin to bring label closer */
+    margin-right: 5px;
 }
 
 .slider-label.right {
-    margin-left: 5px; /* Adjust margin to bring label closer */
+    margin-left: 5px;
 }
 
-/* Responsive styles for mobile devices */
+/* Responsive styles */
 @media (max-width: 768px) {
     body {
-        padding-top: 60px; /* Keep top padding for spacing */
+        padding-top: 60px;
     }
 
     .container {
         width: 100%;
-        padding: 10px 0; /* Add top and bottom padding for spacing */
+        padding: 10px 0;
     }
 
     .controls-container {
         flex-direction: column;
         align-items: center;
         gap: 10px;
-        padding: 0; /* Remove padding for smaller screens */
+        padding: 0;
     }
 
     .image-container {
@@ -199,15 +199,15 @@ label {
     }
 
     #sliderImage {
-        max-height: 60vh; /* Adjust max-height for smaller screens */
+        max-height: 60vh;
     }
 
     .slider-wrapper {
-        max-width: 100%; /* Remove width restriction for mobile */
+        max-width: 100%;
     }
 
     .slider-container {
-        width: 80%; /* Adjust width to maintain layout */
+        width: 80%;
     }
 
     .region-refresh-container {
