@@ -1,4 +1,4 @@
-/* General styles */
+/* Reset margins and padding for the body */
 body {
     margin: 0;
     padding: 0;
@@ -7,7 +7,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* Container styles */
+/* General container styles */
 .container {
     width: 100%;
     max-width: 900px;
@@ -64,7 +64,7 @@ body {
     background-color: #007bff;
 }
 
-/* Controls container */
+/* Controls container styles */
 .controls-container {
     display: flex;
     flex-direction: column;
@@ -74,7 +74,7 @@ body {
     box-sizing: border-box;
 }
 
-/* Slider wrapper */
+/* Slider wrapper styles */
 .slider-wrapper {
     display: flex;
     align-items: center;
@@ -83,30 +83,31 @@ body {
     margin-top: 0;
 }
 
-/* Slider container */
+/* Slider container styles */
 .slider-container {
+    flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 80%;
-    margin: 5px auto 0 auto; /* Center the slider container and add top margin */
+    margin: 0 10px;
 }
 
-/* Time slider */
+/* Time slider styles */
 #timeSlider {
     width: 100%;
 }
 
-/* Speed controls */
+/* Speed controls styles */
 .speed-controls {
     display: flex;
     align-items: center;
     gap: 10px;
     justify-content: center;
-    margin-top: 20px; /* Add 5px space above the speed controls */
+    margin-top: 20px;
 }
 
-/* Speed display container */
+/* Speed display styles */
 #speedDisplayContainer {
     width: 120px;
     text-align: center;
@@ -116,7 +117,7 @@ body {
     border-radius: 5px;
     background-color: #444;
     color: #fff;
-    height: 33px; /* Set height to 33px */
+    height: 33px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -149,28 +150,7 @@ button:focus {
     background-color: #007bff;
 }
 
-/* Dropdown styles */
-select {
-    padding: 5px;
-    font-size: 14px;
-    background-color: #444;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    height: 33px; /* Set height to 33px */
-}
-
-select option {
-    background-color: #333;
-    color: white;
-}
-
-/* Label styles */
-label {
-    color: #fff;
-}
-
-/* Image container */
+/* Image container styles */
 .image-container {
     text-align: center;
     max-width: 100%;
@@ -179,7 +159,7 @@ label {
     margin: 0;
 }
 
-/* Image */
+/* Image styles */
 #sliderImage {
     width: 100%;
     height: auto;
@@ -190,14 +170,14 @@ label {
     margin: 0;
 }
 
-/* Refresh container */
+/* Refresh container styles */
 .refresh-container {
     text-align: right;
     font-size: 12px;
     color: gray;
 }
 
-/* Slider label */
+/* Slider label styles */
 .slider-label {
     font-size: 14px;
     color: #fff;
@@ -212,7 +192,7 @@ label {
     margin-left: 5px;
 }
 
-/* Responsive styles */
+/* Responsive styles for mobile devices */
 @media (max-width: 768px) {
     body {
         padding-top: 60px;
