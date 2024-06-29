@@ -7,28 +7,32 @@ document.addEventListener('DOMContentLoaded', async function () {
     const slowerButton = document.getElementById('slowerButton');
     const playPauseButton = document.getElementById('playPauseButton');
     const lastRefresh = document.getElementById('lastRefresh');
+    const timeDisplay = document.getElementById('timeDisplay');
 
-    const regionURLs = {
-        nationwide: "https://radar.kma.go.kr/cgi-bin/center/nph-rdr_cmp_img?cmp=HSP&color=C2&qcd=HSO&obs=ECHO&map=HB&size=1000&xp=720&yp=614&ht=700&zoom=2&lonlat=1&gis=1&legend=1&aws=1&gov=KMA&color=C4&wv=1&ht=800&topo=1&gc=T&gc_itv=60&tm=",
-        seoul: "https://radar.kma.go.kr/cgi-bin/center/nph-rdr_cmp_img?cmp=HSP&color=C2&qcd=HSO&obs=ECHO&map=HB&size=1000&xp=630&yp=790&ht=700&zoom=4.9&lonlat=1&gis=1&legend=1&aws=1&gov=KMA&color=C4&wv=1&ht=2000&topo=1&gc=T&gc_itv=60&tm=",
-        chungcheong: "https://radar.kma.go.kr/cgi-bin/center/nph-rdr_cmp_img?cmp=HSP&color=C2&qcd=HSO&obs=ECHO&map=HB&size=1000&xp=675&yp=680&ht=700&zoom=4.9&lonlat=1&gis=1&legend=1&aws=1&gov=KMA&color=C4&wv=1&ht=2000&topo=1&gc=T&gc_itv=60&tm=",
-        honam: "https://radar.kma.go.kr/cgi-bin/center/nph-rdr_cmp_img?cmp=HSP&color=C2&qcd=HSO&obs=ECHO&map=HB&size=1000&xp=630&yp=528&ht=700&zoom=4.9&lonlat=1&gis=1&legend=1&aws=1&gov=KMA&color=C4&wv=1&ht=2000&topo=1&gc=T&gc_itv=60&tm=",
-        gyeongnam: "https://radar.kma.go.kr/cgi-bin/center/nph-rdr_cmp_img?cmp=HSP&color=C2&qcd=HSO&obs=ECHO&map=HB&size=1000&xp=790&yp=550&ht=700&zoom=4.9&lonlat=1&gis=1&legend=1&aws=1&gov=KMA&color=C4&wv=1&ht=2000&topo=1&gc=T&gc_itv=60&tm=",
-        gyeongbuk: "https://radar.kma.go.kr/cgi-bin/center/nph-rdr_cmp_img?cmp=HSP&color=C2&qcd=HSO&obs=ECHO&map=HB&size=1000&xp=800&yp=660&ht=700&zoom=4.9&lonlat=1&gis=1&legend=1&aws=1&gov=KMA&color=C4&wv=1&ht=2000&topo=1&gc=T&gc_itv=60&tm=",
-        gangwon: "https://radar.kma.go.kr/cgi-bin/center/nph-rdr_cmp_img?cmp=HSP&color=C2&qcd=HSO&obs=ECHO&map=HB&size=1000&xp=760&yp=820&ht=700&zoom=4.9&lonlat=1&gis=1&legend=1&aws=1&gov=KMA&color=C4&wv=1&ht=2000&topo=1&gc=T&gc_itv=60&tm=",
-        jeju: "https://radar.kma.go.kr/cgi-bin/center/nph-rdr_cmp_img?cmp=HSP&color=C2&qcd=HSO&obs=ECHO&map=HB&size=1000&xp=610&yp=340&ht=700&zoom=4.9&lonlat=1&gis=1&legend=1&aws=1&gov=KMA&color=C4&wv=1&ht=2000&topo=1&gc=T&gc_itv=60&tm="
+    const baseURL = "https://radar.kma.go.kr/cgi-bin/center/nph-rdr_cmp_img?cmp=HSP&color=C4&qcd=HSO&obs=ECHO&map=HB&size=1000&gis=1&legend=1&aws=1&gov=KMA&gc=T&gc_itv=60&center=0&topo=0";
+    const regionConfigs = {
+        nationwide: { url: "&lonlat=0&lat=35.90&lon=127.80&zoom=2&wv=1&ht=1000", interval: 5, frames: 48 },
+        seoul: { url: "&lonlat=0&lat=37.57&lon=126.97&zoom=4.9&wv=1&ht=1000&topo=1", interval: 5, frames: 24 },
+        chungcheong: { url: "&lonlat=0&lat=36.49&lon=127.24&zoom=4.9&wv=1&ht=1000&topo=1", interval: 5, frames: 24 },
+        honam: { url: "&lonlat=0&lat=35.17&lon=126.89&zoom=4.9&wv=1&ht=1000&topo=1", interval: 5, frames: 24 },
+        gyeongnam: { url: "&lonlat=0&lat=35.22&lon=128.67&zoom=4.9&wv=1&ht=1000&topo=1", interval: 5, frames: 24 },
+        gyeongbuk: { url: "&lonlat=0&lat=36.25&lon=128.56&zoom=4.9&wv=1&ht=1000&topo=1", interval: 5, frames: 24 },
+        gangwon: { url: "&lonlat=0&lat=37.78&lon=128.40&zoom=4.9&wv=1&ht=1000&topo=1", interval: 5, frames: 24 },
+        jeju: { url: "&lonlat=0&lat=33.38&lon=126.53&zoom=4.9&wv=1&ht=1000&topo=1", interval: 5, frames: 24 },
+        eastAsia: { url: "&lonlat=1&lat=33.11&lon=126.27&zoom=0.5&wv=0&ht=1000&topo=0", interval: 30, frames: 48 }
     };
 
-    let baseURL = regionURLs['nationwide'];
+    let selectedRegionConfig = regionConfigs['nationwide'];
     let intervalId;
     let isPlaying = true;
     let preloadedImages = [];
     let speed = parseInt(localStorage.getItem('speed')) || 500; // Default speed in milliseconds or saved value
+    let imageTimes = [];
 
     // Load selected region from localStorage
     const savedRegion = localStorage.getItem('selectedRegion');
     if (savedRegion) {
-        baseURL = regionURLs[savedRegion];
+        selectedRegionConfig = regionConfigs[savedRegion];
         regionSelect.value = savedRegion;
     }
 
@@ -48,42 +52,49 @@ document.addEventListener('DOMContentLoaded', async function () {
         if (type === "url") {
             return `${y}${m}${d}${h}${min}`;
         } else {
-            return `${y}.${m}.${d} ${h}:${min}:${s}`;
+            return `${y}년 ${m}월 ${d}일 ${h}시 ${min}분`;
         }
     }
 
     async function generateImageURLs() {
         const urls = [];
         const nowKST = await getInternetTime();
+        const interval = selectedRegionConfig.interval;
 
-        nowKST.setMinutes(Math.floor(nowKST.getMinutes() / 5) * 5);
+        nowKST.setMinutes(Math.floor(nowKST.getMinutes() / interval) * interval);
         nowKST.setSeconds(0);
         nowKST.setMilliseconds(0);
 
-        for (let i = 0; i < 24; i++) {
-            const date = new Date(nowKST.getTime() - i * 5 * 60000);
+        imageTimes = [];
+
+        for (let i = 0; i < selectedRegionConfig.frames; i++) {
+            const date = new Date(nowKST.getTime() - i * interval * 60000);
             const formattedDate = formatDate(date);
-            urls.push(baseURL + formattedDate);
+            urls.push(`${baseURL}${selectedRegionConfig.url}&tm=${formattedDate}`);
+            imageTimes.push(date);
         }
         return urls.reverse();
     }
 
     async function updateImages() {
         const images = await generateImageURLs();
-        preloadedImages = images.map(url => {
+        preloadedImages = images.map((url, index) => {
             const img = new Image();
             img.src = url;
-            return img;
+            return { img, time: imageTimes[imageTimes.length - 1 - index] };
         });
 
-        // Update the image source based on slider value
+        // Update the image source and time display based on slider value
+        slider.max = selectedRegionConfig.frames;
         slider.addEventListener('input', function () {
             const index = slider.value - 1;
-            image.src = preloadedImages[index].src;
+            image.src = preloadedImages[index].img.src;
+            timeDisplay.textContent = formatDate(preloadedImages[index].time, "display");
         });
 
-        // Initialize the first image
-        image.src = preloadedImages[0].src;
+        // Initialize the first image and time display
+        image.src = preloadedImages[0].img.src;
+        timeDisplay.textContent = formatDate(preloadedImages[0].time, "display");
 
         // Set up the automatic slide show
         startAutoPlay();
@@ -92,9 +103,10 @@ document.addEventListener('DOMContentLoaded', async function () {
     function startAutoPlay() {
         clearInterval(intervalId);
         intervalId = setInterval(() => {
-            slider.value = (parseInt(slider.value) % 24) + 1;
+            slider.value = (parseInt(slider.value) % selectedRegionConfig.frames) + 1;
             const index = slider.value - 1;
-            image.src = preloadedImages[index].src;
+            image.src = preloadedImages[index].img.src;
+            timeDisplay.textContent = formatDate(preloadedImages[index].time, "display");
         }, speed);
     }
 
@@ -134,7 +146,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
 
     regionSelect.addEventListener('change', function () {
-        baseURL = regionURLs[regionSelect.value];
+        selectedRegionConfig = regionConfigs[regionSelect.value];
         localStorage.setItem('selectedRegion', regionSelect.value); // Save selected region to localStorage
         updateImages();
     });
