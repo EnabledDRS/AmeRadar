@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AmeRadar</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
@@ -12,14 +12,15 @@
         <div class="image-container">
             <img id="sliderImage" src="" alt="Weather Image">
         </div>
+        <!-- Time Display -->
+        <div id="timeDisplay" class="time-display">yyyy년 m월 d일 hh시 mm분</div>
         <!-- Time Slider -->
         <div class="slider-wrapper">
-            <div class="slider-label left">-2H</div>
             <div class="slider-container">
                 <input type="range" min="1" max="24" value="1" class="slider" id="timeSlider">
             </div>
-            <div class="slider-label right">0</div>
         </div>
+        <!-- Speed Controls -->
         <div class="speed-controls">
             <button id="fasterButton">빠르게</button>
             <div id="speedDisplayContainer">0.5 s/frame</div>
@@ -31,14 +32,15 @@
             <div class="slider-container">
                 <label for="regionSelect">지역:</label>
                 <select id="regionSelect">
-                    <option value="nationwide">전국</option>
-                    <option value="seoul">수도권</option>
-                    <option value="chungcheong">충청권</option>
-                    <option value="honam">호남권</option>
-                    <option value="gyeongnam">경남권</option>
-                    <option value="gyeongbuk">경북권</option>
-                    <option value="gangwon">강원권</option>
-                    <option value="jeju">제주권</option>
+                    <option value="nationwide">전국[4시간]</option>
+                    <option value="seoul">수도권[2시간]</option>
+                    <option value="chungcheong">충청권[2시간]</option>
+                    <option value="honam">호남권[2시간]</option>
+                    <option value="gyeongnam">경남권[2시간]</option>
+                    <option value="gyeongbuk">경북권[2시간]</option>
+                    <option value="gangwon">강원권[2시간]</option>
+                    <option value="jeju">제주권[2시간]</option>
+                    <option value="eastAsia">동아시아 광역[24시간]</option>
                 </select>
             </div>
             <div class="refresh-container">
