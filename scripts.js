@@ -94,6 +94,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         // Initialize the first image and time display
         image.src = preloadedImages[0].img.src;
+        image.style.width = "100%"; // Ensure image width fits the screen
         timeDisplay.textContent = formatDate(preloadedImages[0].time, "display");
 
         // Set up the automatic slide show
