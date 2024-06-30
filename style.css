@@ -43,7 +43,7 @@ body {
 /* Time display styles */
 .time-display {
     margin: 5px 0 0 0;
-    font-size: 16px;
+    font-size: 14px; /* Set to match the "지역" font size */
     color: #ffffff;
 }
 
@@ -171,7 +171,7 @@ button:focus {
 
 #regionSelect {
     padding: 10px;
-    font-size: 14px;
+    font-size: 14px; /* Ensure this matches the font size for uniformity */
     border: 1px solid #3a3a3a;
     border-radius: 5px;
     background-color: #2d2d2d;
@@ -195,14 +195,14 @@ button:focus {
 .slider-container label,
 .checkbox-container label {
     margin-right: 5px;
-    font-size: 14px;
+    font-size: 14px; /* Ensure this matches the font size for uniformity */
     white-space: nowrap; /* Prevent labels from wrapping */
 }
 
 /* Refresh container styles */
 .refresh-container {
     text-align: center;
-    font-size: 12px;
+    font-size: 12px; /* Set to match the "지역" font size */
     color: gray;
     white-space: nowrap; /* Prevent line breaks */
     overflow: hidden; /* Hide overflow text */
@@ -225,7 +225,7 @@ button:focus {
 }
 
 #sourceText {
-    font-size: 12px;
+    font-size: 12px; /* Ensure this matches the font size for uniformity */
     color: gray;
     margin-top: 2px; /* Space between image and text */
 }
