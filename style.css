@@ -147,15 +147,26 @@ button:focus {
 .region-refresh-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     margin-top: 20px;
-    flex-wrap: nowrap; /* Prevent wrapping */
+    flex-wrap: wrap; /* Allow wrapping */
 }
 
 .slider-container {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 20px; /* Increased gap for better spacing */
+    flex-wrap: wrap;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* Increased gap for better spacing */
+    flex-wrap: wrap;
+    margin-top: 10px;
 }
 
 #regionSelect {
@@ -181,7 +192,8 @@ button:focus {
 }
 
 /* Adjust styles for labels */
-.slider-container label {
+.slider-container label,
+.checkbox-container label {
     margin-right: 5px;
     font-size: 14px;
     white-space: nowrap; /* Prevent labels from wrapping */
@@ -189,7 +201,7 @@ button:focus {
 
 /* Refresh container styles */
 .refresh-container {
-    text-align: right;
+    text-align: center;
     font-size: 12px;
     color: gray;
     white-space: nowrap; /* Prevent line breaks */
@@ -202,15 +214,9 @@ button:focus {
 .source-container {
     display: flex;
     align-items: center;
+    justify-content: center; /* Center content */
     margin-top: 10px;
-    justify-content: flex-end; /* Align content to the right */
     gap: 10px; /* Space between image and text */
-}
-
-.source-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .public-domain-image {
@@ -254,6 +260,12 @@ button:focus {
 
     .slider-container {
         width: 100%;
+        justify-content: center; /* Center-align for mobile */
+    }
+
+    .checkbox-container {
+        width: 100%;
+        justify-content: center; /* Center-align for mobile */
     }
 
     .time-display {
