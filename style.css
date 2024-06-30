@@ -293,6 +293,35 @@ button:focus {
         height: 35px; /* Adjust height for mobile */
         width: 100px; /* Adjust width for mobile */
     }
+
+    .speed-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .region-refresh-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .source-container {
+        justify-content: center;
+    }
+
+    .slider-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #sourceText {
+        margin-top: 2px; /* Space between image and text */
+        text-align: center;
+    }
+
+    .public-domain-image {
+        margin-bottom: 2px; /* Space between image and text */
+    }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
